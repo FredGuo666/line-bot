@@ -13,6 +13,7 @@ from linebot.models import (
 
 app = Flask(__name__)
 
+#token 权杖, access 存取秘密
 line_bot_api = LineBotApi('tK115PnaTqyDpVhla/ARuEXrWnQT2PXdy9KaLGSGlr7c/WnJ5vH/cgO2se2jZ3UX2Ft1Pj9WkQR7DpYhrDWgYyePUKQoojOkgguoFxLo9pzlYhHe71LBOXl2WyxZuZf1hbzOFMMtJvpFDsa7DV0bJwdB04t89/1O/w1cDnyilFU=')
 handler = WebhookHandler('f3f9fed0a25365a20e683c847c490d57')
 
@@ -39,17 +40,10 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    r = '很抱歉，我看不懂你说什么'
-
-
-    if msg == 'hi':
-        r = 'hi'
-    else msg == '你吃饭了吗':
-        r = '还没'
-
+    s = '你吃饭了吗'
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=r))
+        TextSendMessage(text=s))
 
 
 if __name__ == "__main__":
