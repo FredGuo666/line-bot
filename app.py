@@ -42,10 +42,15 @@ def handle_message(event):
     msg = event.message.text
     r = '很抱歉，我看不懂你说什么'
 
-    if msg == 'hi':
-        r = 'hi'
+    if msg in ['hi','Hi']:
+        r = '嗨'
     elif msg == '你吃饭了吗':
-        r = '还没' 
+        r = '还没'
+    elif msg == '你是谁':
+        r = '我是机器人'
+    elif '订位' in msg:
+        r = '您想订位，是吗?'
+
     line_bot_api.reply_message(
         event.reply_token,
         TextSendMessage(text=r))
